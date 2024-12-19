@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-import { Box, BoxProps, styled, Typography, TypographyProps } from "@mui/material";
+import { Box, BoxProps, styled } from "@mui/material";
 
 interface SectionProps {
   children: [
@@ -14,9 +14,11 @@ const Container = styled(Box)(({ theme }) => ({
   borderRadius: theme.spacing(1),
   overflow: "hidden",
   backgroundColor: '#262626',
+  display: 'flex',
+  flexDirection: 'column',
 }));
 
-const Header = styled(Typography)<TypographyProps>(({ theme }) => ({
+const Header = styled(Box)<BoxProps>(({ theme }) => ({
   backgroundColor: '#333333',
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),
@@ -25,14 +27,15 @@ const Header = styled(Typography)<TypographyProps>(({ theme }) => ({
 const Body = styled(Box)(({ theme }) => ({
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),
+  flexGrow: 1
 }));
 
 const Section: FC<SectionProps & BoxProps> = ({ children, ...other }) => {
-  const [title, body] = children;
+  const [header, body] = children;
 
   return (
     <Container {...other}>
-      <Header component={'h3'}>{title}</Header>
+      <Header>{header}</Header>
       <Body>{body}</Body>
     </Container>
   );

@@ -1,11 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import Section from "./section";
 
 const TaskBoard = () => {
   return (
     <Section height={'100%'}>
-      <>Задача</>
+      <Typography variant="h6" component="h3">Задача</Typography>
       <Box py={2} px={3} sx={{
         '& p': {
           marginBottom: '1em',
