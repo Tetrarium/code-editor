@@ -2,6 +2,7 @@ import { Box, createTheme, Grid2 as Grid, ThemeProvider } from "@mui/material";
 
 import Layout from "./components/layout";
 import Section from "./components/sections/section";
+import TaskBoard from "./components/sections/task-board";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,10 +21,7 @@ function App() {
       <Layout>
         <Grid container spacing={1}>
           <Grid size={{ xs: 12, md: 6 }} alignItems='stretch'>
-            <Section>
-              <Box>Header</Box>
-              <Box>content</Box>
-            </Section>
+            <TaskBoard />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }} >
             <Box display="flex" gap={1} flexDirection="column" height={'100%'}>
