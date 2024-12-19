@@ -4,7 +4,7 @@ import Section from "./section";
 
 const TaskBoard = () => {
   return (
-    <Section>
+    <Section height={'100%'}>
       <>Задача</>
       <Box py={2} px={3} sx={{
         '& p': {
