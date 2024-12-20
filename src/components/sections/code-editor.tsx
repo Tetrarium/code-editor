@@ -32,6 +32,20 @@ const CodeEditor = () => {
 
   const handleSubmit = () => {
     console.log(code);
+
+    fetch('/api/run', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        language: lang.value,
+        code,
+      })
+    })
+      .then(response => response.json())
+      .then(console.log)
+      .catch(console.log);
   };
 
   return (

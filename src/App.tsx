@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+
 import { Box, createTheme, Grid2 as Grid, ThemeProvider } from "@mui/material";
 
 import Layout from "./components/layout";
 import CodeEditor from "./components/sections/code-editor";
 import ResultBoard from "./components/sections/result-board";
 import TaskBoard from "./components/sections/task-board";
+import { makeServer } from "./fakeApi/fakeApi";
 
 const darkTheme = createTheme({
   palette: {
@@ -17,6 +20,14 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  useEffect(() => {
+    const server = makeServer();
+
+    return () => {
+      server.shutdown();
+    };
+  }, []);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Layout>
