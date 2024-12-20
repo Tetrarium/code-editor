@@ -24,6 +24,7 @@ export const initialResult: ResultState = {
 export function resultReducer(state: ResultState, action: Action): ResultState {
   switch (action.type) {
     case ACTIONS.SET: {
+      console.log(state);
       return state;
     }
     case ACTIONS.CLEAR: {

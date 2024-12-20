@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useResultDispatch } from "@/store/resultContext";
+import { ResultState } from "@/types/types";
 import Editor from "@monaco-editor/react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { Box, IconButton, MenuItem, Select, Tooltip, Typography } from "@mui/material";
@@ -27,6 +29,9 @@ const options = languages.map(({ name, value }, i) => <MenuItem key={value} valu
 const CodeEditor = () => {
   const [languageIndex, setLanguageIndex] = useState<number>(0);
   const [code, setCode] = useState<string>('');
+  const dispatch = useResultDispatch();
+
+  if (!dispatch) return null;
 
   const lang = languages[languageIndex];
 
@@ -41,8 +46,14 @@ const CodeEditor = () => {
         code,
       })
     })
-      .then(response => response.json())
-      .then(console.log)
+      .then(response => response.json() as unknown as ResultState)
+      .then((data) => {
+        console.log(data);
+        dispatch({
+          type: 'set',
+          payload: data,
+        });
+      })
       .catch(console.log);
   };
 
