@@ -31,8 +31,6 @@ const CodeEditor = () => {
   const lang = languages[languageIndex];
 
   const handleSubmit = () => {
-    console.log(code);
-
     fetch('/api/run', {
       method: 'POST',
       headers: {
@@ -54,6 +52,7 @@ const CodeEditor = () => {
         <Typography variant="h6" component="h3" sx={{ marginRight: 'auto' }}>Редактор</Typography>
         <Select
           defaultValue={languageIndex}
+          value={languageIndex}
           size="small"
           variant="standard"
           onChange={e => setLanguageIndex(+e.target.value)}
